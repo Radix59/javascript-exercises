@@ -1,16 +1,20 @@
 const removeFromArray = function (subjectArray, ...args)
 {
-    if (!subjectArray.isArray())
+    if (!Array.isArray(subjectArray))
     {
         return "ERROR";
     }
     args.forEach((arg) =>
     {
-        let index = subjectArray.indexOf(arg);
-        if (index > -1)
+        let index = -1;
+        do
         {
-            subjectArray.splice(index, 1);
-        }
+            index = subjectArray.indexOf(arg);
+            if (index > -1)
+            {
+                subjectArray.splice(index, 1);
+            }
+        } while (index > -1)
     })
 
     return subjectArray;
